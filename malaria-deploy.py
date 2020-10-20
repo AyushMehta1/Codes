@@ -18,11 +18,6 @@ def main():
     </style> """
     st.markdown(colorr,unsafe_allow_html=True)
 
-    ## Transformation
-    trans = transforms.Compose([
-        transforms.Resize(224) , transforms.CenterCrop(224)  , transforms.RandomHorizontalFlip(p= 0.4) ,
-        transforms.RandomVerticalFlip(p=0.5)  ,transforms.ToTensor() ])
-
     # check if CUDA is available
     train_on_gpu = torch.cuda.is_available()
 
@@ -59,8 +54,6 @@ def main():
     type_of_files=['png','jpg','jpeg']
     #st.set_option('deprecation.showfileUploaderEncoding', False)
     images=st.file_uploader("Upload",type=type_of_files)
-    img=Image.open(images)
-    st.image(img)
     #img_name = r"C:\Users\MANISH SHARMA\Desktop\deeplearning-pytorch\malaria\not-infect1.jpg" # change this to the name of your image file.
     def predict_image(image_path, model):
         image = Image.open(image_path)
@@ -72,9 +65,9 @@ def main():
         
         output = model(image_tensor)
         index = output.argmax().item()
-        if index == 0:
+        if index == 1:
             st.write( ''' Non-Parasitic ''')
-        elif index == 1:
+        elif index == 0:
             st.write(''' Parasitic ''')
         
     predict_image(images,model)
