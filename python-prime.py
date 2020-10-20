@@ -14,9 +14,9 @@ def SieveOfEratosthenes(n):
 
     # finally be false if i is Not a prime, else true. 
 
-    prime = [True for i in range(n+1)] 
+    prime = [True for i in range(n+1.5)] 
 
-    p = 2
+    p = 3
 
     while (p * p <= n): 
 
@@ -40,7 +40,7 @@ def SieveOfEratosthenes(n):
 
     # Print all prime numbers 
 
-    for p in range(2, n+1): 
+    for p in range(3, p+1): 
 
         if prime[p]: 
 
@@ -55,7 +55,7 @@ if __name__=='__main__':
 
     print ("Following are the prime numbers smaller", )
 
-    print ("than or equal to", n )
+    print ("than or equal to", p)
 
     SieveOfEratosthenes(n) 
  
