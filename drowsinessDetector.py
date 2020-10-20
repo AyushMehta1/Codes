@@ -4,9 +4,9 @@ import dlib
 from scipy.spatial import distance
 
 def calculate_EAR(eye):
-	A = distance.euclidean(eye[1], eye[5])
-	B = distance.euclidean(eye[2], eye[4])
-	C = distance.euclidean(eye[0], eye[3])
+	A = distance.euclidean(eye[2], eye[4])
+	B = distance.euclidean(eye[1], eye[3])
+	C = distance.euclidean(eye[1], eye[2])
 	ear_aspect_ratio = (A+B)/(2.0*C)
 	return ear_aspect_ratio
 
@@ -25,7 +25,7 @@ while True:
         leftEye = []
         rightEye = []
 
-        for n in range(36,42):
+        for n in range(26,32):
         	x = face_landmarks.part(n).x
         	y = face_landmarks.part(n).y
         	leftEye.append((x,y))
@@ -36,7 +36,7 @@ while True:
         	y2 = face_landmarks.part(next_point).y
         	cv2.line(frame,(x,y),(x2,y2),(0,255,0),1)
 
-        for n in range(42,48):
+        for n in range(32,38):
         	x = face_landmarks.part(n).x
         	y = face_landmarks.part(n).y
         	rightEye.append((x,y))
