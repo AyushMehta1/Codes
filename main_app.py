@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd 
 import missingno as msg
 import numpy as np
-import seaborn as sb 
-import matplotlib.pyplot as plt 
 
 
 def main():
@@ -39,11 +37,6 @@ def main():
             if st.checkbox("SHOW SUMMARY"):
                 st.write(df.describe())
 
-
-    elif choice == "PLOT":
-        st.subheader("--Data Visualization--")
-        st.write(""" ## *Upload Dataset* ## """)
-        dataset = st.file_uploader("" ,type = ["csv","txt","xls"])
         
         if dataset is not None:
             df = pd.read_csv(dataset , delimiter = ",")
@@ -60,7 +53,7 @@ def main():
                 y_axis = df[y_axis]
                 st.write(sb.barplot(x_axis , y_axis))
                 st.pyplot()
-                plt.xticks(rotation = 90)
+                plt.xticks(rotation = 20)
                 plt.legend()
                 plt.grid()
 
